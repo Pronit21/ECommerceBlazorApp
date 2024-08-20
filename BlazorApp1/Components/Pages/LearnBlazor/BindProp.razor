@@ -1,0 +1,33 @@
+﻿@page "/LearnBlazor/BindProp"
+
+<h3>BindProp</h3>
+
+<p>Product Id: @product.Id</p>
+<p>Product Name: @product.Name</p>
+<p>Product Price: @product.Price</p>
+<p>Product Description: @product.Description</p>
+<p>Product IsActive: @product.IsActive</p>
+
+<p>Input Price: <input type="number" @bind="@product.Price" @bind:event="oninput" /></p>
+<p>
+    This product is:
+    @(@product.IsActive ? "Active" : "Inactive")
+</p>
+
+
+@code {
+    Models.Product product = new()
+        {
+            Name = "Product Name",
+            IsActive = true,
+            Id = 1,
+            Price = 100,
+            Description = "Product Description",
+            ProductProperties = new List<Models.Product_Prop>()
+            {
+                new Models.Product_Prop { Id = 1, Key="Color", Value = "Value 1" },
+                new Models.Product_Prop { Id = 2, Key="Size", Value = "Value 1" },
+                new Models.Product_Prop { Id = 3, Key="Flavour", Value = "Value 1" }
+            }
+        };
+}
